@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mimall.mi.mapper.TbPanelContentMapper">
+    <resultMap id="BaseResultMap" type="com.example.mimall.mi.entity.TbPanelContent">
+        <id column="id" property="id" />
+        <result column="panel_id" property="panelId" />
+        <result column="type" property="type" />
+        <result column="product_id" property="productId" />
+        <result column="sort_order" property="sortOrder" />
+        <result column="full_url" property="fullUrl" />
+        <result column="pic_url" property="picUrl" />
+        <result column="pic_url2" property="picUrl2" />
+        <result column="pic_url3" property="picUrl3" />
+        <result column="created" property="created" />
+        <result column="updated" property="updated" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, panel_id, type, product_id, sort_order, full_url, pic_url, pic_url2, pic_url3,
+    created, updated
+  </sql>
+    <select id="getTbPanelContentByPanelID" resultMap="BaseResultMap">
+        select distinct <include refid="Base_Column_List" />
+        from tb_panel_content
+        where panel_id = #{id}
+        order by sort_order
+    </select>
+</mapper>

@@ -8,6 +8,7 @@ package com.example.mimall.mi.entity;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ClassName TbPanel
@@ -52,4 +53,14 @@ public class TbPanel {
     private Date created;
 
     private Date updated;
+
+    private List<TbPanelContent> panelContents;
+
+    public List<TbPanelContent> getPanelContents() {
+        return panelContents;
+    }
+
+    public void setPanelContents(List<TbPanelContent> panelContents) {
+        this.panelContents = panelContents;
+    }
 }

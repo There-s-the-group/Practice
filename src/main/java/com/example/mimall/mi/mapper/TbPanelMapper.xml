@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mimall.mi.mapper.TbPanelMapper">
+    <resultMap id="BaseResultMap" type="com.example.mimall.mi.entity.TbPanel">
+        <id column="id"  property="id" />
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="sortOrder" column="sort_order"/>
+        <result property="position" column="position" />
+        <result property="limitNum" column="limit_num"/>
+        <result property="status" column="status" />
+        <result property="remark" column="remark"/>
+        <result property="created" column="created"/>
+        <result property="updated" column="updated"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name, type, sort_order, position, limit_num, status, remark, created, updated
+  </sql>
+    <select id="getTbPanel" resultMap="BaseResultMap">
+        select distinct <include refid="Base_Column_List" />
+        from tb_panel
+        order by sort_order
+    </select>
+
+</mapper>

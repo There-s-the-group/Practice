@@ -47,7 +47,7 @@ public class ResultVO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer code; // 返回代码
     private String message;//返回信息
-    private Object data;//返回数据
+    private Object result;//返回数据
     /**
      * 时间戳
      */
@@ -60,6 +60,6 @@ public class ResultVO implements Serializable {
     public ResultVO(Integer code, String message, Object data) {
         this.code = code;
         this.message = message;
-        this.data = data;
+        this.result = data;
     }
 }

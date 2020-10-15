@@ -1,4 +1,4 @@
-package com.example.mimall.mi.service;
+package com.example.mimall.mi.service.impl;
 /**
  * @Author: kotori
  * @Date: 2020/10/14 15:39
