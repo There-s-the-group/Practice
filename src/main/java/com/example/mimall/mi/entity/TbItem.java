@@ -62,4 +62,12 @@ public class TbItem {
      */
     private Date updated;
 
+    public String[] getImages() {
+        if (image != null && !"".equals(image)) {
+            String[] strings = image.split(",");
+            return strings;
+        }
+        return null;
+    }
+
 }

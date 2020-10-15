@@ -5,6 +5,8 @@ package com.example.mimall.mi.entity;
  * @Description: 用户成员
  */
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -13,6 +15,7 @@ import java.util.Date;
  * @Description TODO
  * @Author kotori
  */
+@Data
 public class TbMember {
     /**
      * 用户id
@@ -63,7 +66,7 @@ public class TbMember {
 
     private Integer points;
 
-    private BigDecimal balance;
+    private Long balance;
 
     public TbMember() {
     }

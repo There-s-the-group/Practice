@@ -5,6 +5,8 @@ package com.example.mimall.mi.entity;
  * @Description:
  */
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -12,6 +14,7 @@ import java.util.Date;
  * @Description TODO
  * @Author kotori
  */
+@Data
 public class TbExpress {
     /**
      * 快递ID

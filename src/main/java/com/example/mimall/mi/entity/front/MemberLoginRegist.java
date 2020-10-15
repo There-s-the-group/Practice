@@ -18,11 +18,11 @@ public class MemberLoginRegist {
 
     private String userPwd;
 
-    private String challenge;
-
-    private String validate;
-
-    private String seccode;
+//    private String challenge;
+//
+//    private String validate;
+//
+//    private String seccode;
 
     private String statusKey;
 }
