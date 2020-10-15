@@ -20,7 +20,7 @@ public interface ContentService {
      * H获取商品详细数据
      * @return
      */
-    ResultVO getProductDet();
+    ResultVO getProductDet(Long id);
 
     /**
      * 通过PanelID 获取 Panel里面的内容

@@ -28,6 +28,6 @@ public class GoodsController extends BaseController{
 
     @GetMapping("/goods/productDet")
     public ResultVO getProductDet(Long productId){
-        return contentService.getProductDet();
+        return contentService.getProductDet(productId);
     }
 }

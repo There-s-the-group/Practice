@@ -6,9 +6,12 @@ package com.example.mimall.mi.service.impl;
  */
 
 import com.example.mimall.mi.entity.TbItem;
+import com.example.mimall.mi.entity.TbItemDesc;
 import com.example.mimall.mi.entity.TbPanel;
 import com.example.mimall.mi.entity.TbPanelContent;
+import com.example.mimall.mi.entity.front.ProductDet;
 import com.example.mimall.mi.entity.vo.ResultVO;
+import com.example.mimall.mi.mapper.TbItemDescMapper;
 import com.example.mimall.mi.mapper.TbItemMapper;
 import com.example.mimall.mi.mapper.TbPanelContentMapper;
 import com.example.mimall.mi.mapper.TbPanelMapper;
@@ -32,6 +35,8 @@ public class ContentServiceImpl extends BaseService implements ContentService {
     TbPanelContentMapper tbPanelContentMapper;
     @Autowired
     TbItemMapper tbItemMapper;
+    @Autowired
+    TbItemDescMapper tbItemDescMapper;
 
     @Override
     public ResultVO getHome() {
@@ -55,8 +60,32 @@ public class ContentServiceImpl extends BaseService implements ContentService {
     }
 
     @Override
-    public ResultVO getProductDet() {
-        return null;
+    public ResultVO getProductDet(Long id) {
+        System.out.println(id);
+        TbItem tbItem = tbItemMapper.selectByPrimaryKey(id);
+        ProductDet productDet = new ProductDet();
+        productDet.setProductId(id);
+        productDet.setProductName(tbItem.getTitle());
+        productDet.setSubTitle(tbItem.getSellPoint());
+        if(tbItem.getLimitNum()!=null&&!tbItem.getLimitNum().toString().isEmpty()){
+            productDet.setLimitNum(Long.valueOf(tbItem.getLimitNum()));
+        }else{
+            productDet.setLimitNum(Long.valueOf(tbItem.getNum()));
+        }
+        productDet.setSalePrice(tbItem.getPrice());
+        TbItemDesc tbItemDesc=tbItemDescMapper.selectByPrimaryKey(id);
+        productDet.setDetail(tbItemDesc.getItemDesc());
+
+        if(tbItem.getImage()!=null&&!tbItem.getImage().isEmpty()){
+            String images[]=tbItem.getImage().split(",");
+            productDet.setProductImageBig(images[0]);
+            List list=new ArrayList();
+            for(int i=0;i<images.length;i++){
+                list.add(images[i]);
+            }
+            productDet.setProductImageSmall(list);
+        }
+        return result(productDet);
     }
 
     @Override
