@@ -24,6 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController extends BaseController{
     @Autowired
     LoginService loginService;
+
+    /**
+     * 登录
+     * @param loginRegist
+     * @return
+     */
     @PostMapping("/member/login")
     public ResultVO login(@RequestBody MemberLoginRegist loginRegist){
         final Member member = loginService.userLogin(loginRegist.getUserName(),loginRegist.getUserPwd());
