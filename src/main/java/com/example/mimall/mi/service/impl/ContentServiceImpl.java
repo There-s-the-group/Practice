@@ -5,9 +5,11 @@ package com.example.mimall.mi.service.impl;
  * @Description:
  */
 
+import com.example.mimall.mi.entity.TbItem;
 import com.example.mimall.mi.entity.TbPanel;
 import com.example.mimall.mi.entity.TbPanelContent;
 import com.example.mimall.mi.entity.vo.ResultVO;
+import com.example.mimall.mi.mapper.TbItemMapper;
 import com.example.mimall.mi.mapper.TbPanelContentMapper;
 import com.example.mimall.mi.mapper.TbPanelMapper;
 import com.example.mimall.mi.service.ContentService;
@@ -28,7 +30,8 @@ public class ContentServiceImpl extends BaseService implements ContentService {
     TbPanelMapper tbPanelMapper;
     @Autowired
     TbPanelContentMapper tbPanelContentMapper;
-
+    @Autowired
+    TbItemMapper tbItemMapper;
 
     @Override
     public ResultVO getHome() {
@@ -39,7 +42,20 @@ public class ContentServiceImpl extends BaseService implements ContentService {
             //然后获取各个版块中的商品信息
             final List<TbPanelContent> list2 = tbPanelContentMapper.getTbPanelContentByPanelID(tbPanel.getId());
             tbPanel.setPanelContents(list2);
+            for (TbPanelContent tb : list2){
+                if (tb.getProductId()!= null){
+                    final TbItem tbItem = tbItemMapper.selectByPrimaryKey(tb.getProductId());
+                    tb.setTitle(tbItem.getTitle());
+                    tb.setSellPoint(tbItem.getSellPoint());
+                    tb.setPrice(tbItem.getPrice());
+                }
+            }
         }
         return result(list);
+    }
+
+    @Override
+    public ResultVO getProductDet() {
+        return null;
     }
 }

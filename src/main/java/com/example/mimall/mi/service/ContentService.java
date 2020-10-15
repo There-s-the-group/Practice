@@ -15,4 +15,5 @@ public interface ContentService {
      * @return
      */
     ResultVO getHome();
+    ResultVO getProductDet();
 }

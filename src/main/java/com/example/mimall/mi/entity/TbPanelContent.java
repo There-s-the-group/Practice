@@ -7,6 +7,7 @@ package com.example.mimall.mi.entity;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -50,4 +51,17 @@ public class TbPanelContent {
     private Date created;
 
     private Date updated;
+
+    /**
+     * 商品标题
+     */
+    private String title;
+    /**
+     * 商品卖点
+     */
+    private String sellPoint;
+    /**
+     * 商品价格
+     */
+    private BigDecimal price;
 }
