@@ -21,6 +21,11 @@ public class GoodsController extends BaseController{
     @Autowired
     ContentService contentService;
 
+//    @GetMapping("/goods/navList")
+//    public ResultVO getNavList(){
+//
+//    }
+
     @GetMapping("/goods/productDet")
     public ResultVO getProductDet(Long productId){
         return contentService.getProductDet();

@@ -55,13 +55,13 @@ public class TbPanelContent {
     /**
      * 商品标题
      */
-    private String title;
+    private String productName;
     /**
      * 商品卖点
      */
-    private String sellPoint;
+    private String subTitle;
     /**
      * 商品价格
      */
-    private BigDecimal price;
+    private BigDecimal salePrice;
 }

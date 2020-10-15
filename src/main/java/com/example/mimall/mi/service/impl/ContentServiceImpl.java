@@ -45,9 +45,9 @@ public class ContentServiceImpl extends BaseService implements ContentService {
             for (TbPanelContent tb : list2){
                 if (tb.getProductId()!= null){
                     final TbItem tbItem = tbItemMapper.selectByPrimaryKey(tb.getProductId());
-                    tb.setTitle(tbItem.getTitle());
-                    tb.setSellPoint(tbItem.getSellPoint());
-                    tb.setPrice(tbItem.getPrice());
+                    tb.setProductName(tbItem.getTitle());
+                    tb.setSubTitle(tbItem.getSellPoint());
+                    tb.setSalePrice(tbItem.getPrice());
                 }
             }
         }
@@ -56,6 +56,26 @@ public class ContentServiceImpl extends BaseService implements ContentService {
 
     @Override
     public ResultVO getProductDet() {
+        return null;
+    }
+
+    @Override
+    public ResultVO getPanelContentListByPanelId() {
+        return null;
+    }
+
+    @Override
+    public ResultVO getTbPanelContentById() {
+        return null;
+    }
+
+    @Override
+    public ResultVO getRecommendGoods() {
+        return null;
+    }
+
+    @Override
+    public ResultVO getAllProduct(int page, int size, String sort, Long cid, int priceGt, int priceLte) {
         return null;
     }
 }
