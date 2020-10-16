@@ -7,6 +7,7 @@ package com.example.mimall.mi.service.impl;
 
 import com.example.mimall.mi.entity.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
  * @Description TODO
  * @Author kotori
  */
+@Service
 public class BaseService {
 
     protected ResultVO result(Object data) {

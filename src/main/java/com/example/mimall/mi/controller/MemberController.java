@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @ClassName MemberController
- * @Description TODO
+ * @Description 登录控制
  * @Author kotori
  */
 @RestController

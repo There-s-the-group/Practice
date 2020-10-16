@@ -1,14 +1,13 @@
 package com.example.mimall.mi.service;
 
 import com.example.mimall.mi.entity.CartProduct;
-import com.example.mimall.mi.entity.front.Cart;
 
 import java.util.List;
 
 /**
  * @Author: kotori
  * @Date: 2020/10/15 18:56
- * @Description:
+ * @Description: 购物车接口
  */
 public interface CartService {
     /**
@@ -25,7 +24,7 @@ public interface CartService {
      * @param userId
      * @return
      */
-    List<Cart> getCartList(long userId);
+    List<CartProduct> getCartList(long userId);
 
     /**
      * 更新

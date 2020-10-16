@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * @ClassName CartController
- * @Description TODO
+ * @Description 购物车控制
  * @Author kotori
  */
 @RestController
@@ -43,7 +43,7 @@ public class CartController extends BaseController{
      */
     @PostMapping("/member/cartList")
     public ResultVO getCartList(@RequestBody Cart cart){
-        final List<Cart> cartList = cartService.getCartList(cart.getUserId());
+        final List<CartProduct> cartList = cartService.getCartList(cart.getUserId());
         return result(cartList);
     }
 
@@ -81,7 +81,7 @@ public class CartController extends BaseController{
     }
 
     /**
-     * 是否全选购物车
+     * 是否全选购物车商品
      * @param cart
      * @return
      */

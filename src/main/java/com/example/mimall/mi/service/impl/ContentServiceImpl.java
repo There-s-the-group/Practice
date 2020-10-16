@@ -107,4 +107,9 @@ public class ContentServiceImpl extends BaseService implements ContentService {
     public ResultVO getAllProduct(int page, int size, String sort, Long cid, int priceGt, int priceLte) {
         return null;
     }
+
+    @Override
+    public List<TbPanelContent> getNavList() {
+        return null;
+    }
 }

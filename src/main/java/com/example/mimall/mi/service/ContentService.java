@@ -1,13 +1,16 @@
 package com.example.mimall.mi.service;
 
 
+import com.example.mimall.mi.entity.TbPanelContent;
 import com.example.mimall.mi.entity.vo.ResultVO;
+
+import java.util.List;
 
 
 /**
  * @Author: kotori
  * @Date: 2020/10/14 18:03
- * @Description:
+ * @Description: 商品接口
  */
 public interface ContentService {
     /**
@@ -52,6 +55,11 @@ public interface ContentService {
      */
     ResultVO getAllProduct(int page, int size, String sort, Long cid, int priceGt, int priceLte);
 
+    /**
+     * 获取导航栏
+     * @return
+     */
+    List<TbPanelContent> getNavList();
 
 
 }

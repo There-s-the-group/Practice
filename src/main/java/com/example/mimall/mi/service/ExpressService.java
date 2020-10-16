@@ -6,8 +6,8 @@ import java.util.List;
 
 /**
  * @Author: kotori
- * @Date: 2020/10/16 09:32
- * @Description:
+ * @Date: 2020/10/16 09:02
+ * @Description: 快递接口
  */
 public interface ExpressService {
     /**
