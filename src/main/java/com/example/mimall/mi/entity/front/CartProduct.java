@@ -1,4 +1,4 @@
-package com.example.mimall.mi.entity;
+package com.example.mimall.mi.entity.front;
 /**
  * @Author: kotori
  * @Date: 2020/10/15 16:26
@@ -24,9 +24,11 @@ public class CartProduct {
 
     private Long limitNum;
 
-    private String checked;
+    private Integer checked;
 
     private String productName;
 
     private String productImg;
+
+    private Integer buyNum;
 }

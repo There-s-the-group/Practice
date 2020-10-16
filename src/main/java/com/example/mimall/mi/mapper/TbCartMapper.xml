@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.mimall.mi.mapper.TbCartMapper">
-    <resultMap id="BaseResultMap" type="com.example.mimall.mi.entity.front.Cart">
-        <id column="userId" property="userId"/>
-        <result column="productId" property="productId"/>
-        <result column="checked" property="checked"/>
-        <result column="productNum" property="productNum"/>
+
+    <resultMap id="BaseResultMap" type="com.example.mimall.mi.entity.front.CartProduct">
+        <result column="aa" property="productId"/>
+        <result column="bb" property="salePrice"/>
+        <result column="cc" property="productNum"/>
+        <result column="dd" property="limitNum"/>
+        <result column="ee" property="checked"/>
+        <result column="ff" property="productName"/>
+        <result column="gg" property="productImg"/>
+        <result column="hh" property="buyNum"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-    userId,productId,checked,productNum
+    tb_cart.productId aa,tb_item.price bb,tb_item.num cc,tb_item.limit_num dd,tb_cart.checked ee,tb_item.title ff,tb_item.image gg,tb_cart.productNum hh
   </sql>
     <select id="getCartListById" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from tb_cart
-        where userId = #{id}
+        select <include refid="Base_Column_List"/>
+        from tb_cart join tb_item
+        on tb_cart.productId = tb_item.id and tb_cart.userId = #{userId}
     </select>
     <update id="updateCart">
         update tb_cart

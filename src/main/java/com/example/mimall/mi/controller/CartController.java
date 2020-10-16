@@ -5,7 +5,7 @@ package com.example.mimall.mi.controller;
  * @Description:
  */
 
-import com.example.mimall.mi.entity.CartProduct;
+import com.example.mimall.mi.entity.front.CartProduct;
 import com.example.mimall.mi.entity.front.Cart;
 import com.example.mimall.mi.entity.vo.ResultVO;
 import com.example.mimall.mi.service.CartService;
@@ -43,7 +43,7 @@ public class CartController extends BaseController{
      */
     @PostMapping("/member/cartList")
     public ResultVO getCartList(@RequestBody Cart cart){
-        final List<Cart> cartList = cartService.getCartList(cart.getUserId());
+        final List<CartProduct> cartList = cartService.getCartList(cart.getUserId());
         return result(cartList);
     }
 

@@ -71,6 +71,11 @@ public class OrderController extends BaseController{
         return result(i);
     }
 
+    /**
+     * 删除订单
+     * @param orderId
+     * @return
+     */
     @GetMapping("/member/delOrder")
     public ResultVO delOrder(String orderId){
         final int i = orderService.delOrder(Long.valueOf(orderId));

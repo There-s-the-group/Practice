@@ -5,6 +5,7 @@ package com.example.mimall.mi.entity;
  * @Description:
  */
 
+import com.example.mimall.mi.entity.front.CartProduct;
 import com.example.mimall.mi.entity.front.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

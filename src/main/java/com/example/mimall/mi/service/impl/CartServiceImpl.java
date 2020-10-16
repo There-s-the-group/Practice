@@ -5,8 +5,7 @@ package com.example.mimall.mi.service.impl;
  * @Description:
  */
 
-import com.example.mimall.mi.entity.CartProduct;
-import com.example.mimall.mi.entity.front.Cart;
+import com.example.mimall.mi.entity.front.CartProduct;
 import com.example.mimall.mi.mapper.TbCartMapper;
 import com.example.mimall.mi.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +28,20 @@ public class CartServiceImpl extends BaseService implements CartService {
         if(num==0){
             return deleteCartItem(userId, itemId);
         }
-        List<Cart> cartList = getCartList(userId);
-        for(Cart cart:cartList){
-            if(cart.getProductId()==itemId){
-                return tbCartMapper.updateCart(userId, itemId, num+cart.getProductNum(), checked);
+        List<CartProduct> cartList = getCartList(userId);
+        for(CartProduct cartProduct:cartList){
+            if(cartProduct.getProductId()==itemId){
+                return tbCartMapper.updateCart(userId, itemId, num+cartProduct.getBuyNum(), checked);
             }
         }
         return tbCartMapper.addCart(userId, itemId, num);
     }
 
     @Override
-    public List<Cart> getCartList(long userId) {
-        List<Cart> cartList = tbCartMapper.getCartListById(userId);
+    public List<CartProduct> getCartList(long userId) {
+        List<CartProduct> cartList = tbCartMapper.getCartListById(userId);
+        System.out.println("service层："+cartList);
+        System.out.println();
         return cartList;
     }
 

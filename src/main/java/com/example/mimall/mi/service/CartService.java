@@ -1,7 +1,6 @@
 package com.example.mimall.mi.service;
 
-import com.example.mimall.mi.entity.CartProduct;
-import com.example.mimall.mi.entity.front.Cart;
+import com.example.mimall.mi.entity.front.CartProduct;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public interface CartService {
      * @param userId
      * @return
      */
-    List<Cart> getCartList(long userId);
+    List<CartProduct> getCartList(long userId);
 
     /**
      * 更新
