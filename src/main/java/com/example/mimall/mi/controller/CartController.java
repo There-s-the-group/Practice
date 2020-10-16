@@ -43,7 +43,7 @@ public class CartController extends BaseController{
      */
     @PostMapping("/member/cartList")
     public ResultVO getCartList(@RequestBody Cart cart){
-        final List<CartProduct> cartList = cartService.getCartList(cart.getUserId());
+        final List<Cart> cartList = cartService.getCartList(cart.getUserId());
         return result(cartList);
     }
 
@@ -80,6 +80,11 @@ public class CartController extends BaseController{
         return result(i);
     }
 
+    /**
+     * 是否全选购物车
+     * @param cart
+     * @return
+     */
     @PostMapping("/member/editCheckAll")
     public ResultVO editCheckAll(@RequestBody Cart cart){
         final int i = cartService.checkAll(cart.getUserId(), cart.getChecked());
