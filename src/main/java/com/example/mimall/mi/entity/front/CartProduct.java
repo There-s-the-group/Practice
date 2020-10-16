@@ -24,7 +24,7 @@ public class CartProduct {
 
     private Long limitNum;
 
-    private Integer checked;
+    private String checked;
 
     private String productName;
 
