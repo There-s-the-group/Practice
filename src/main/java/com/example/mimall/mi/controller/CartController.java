@@ -43,7 +43,7 @@ public class CartController extends BaseController{
      */
     @PostMapping("/member/cartList")
     public ResultVO getCartList(@RequestBody Cart cart){
-        final List<CartProduct> cartList = cartService.getCartList(cart.getUserId());
+        final List<Cart> cartList = cartService.getCartList(cart.getUserId());
         return result(cartList);
     }
 

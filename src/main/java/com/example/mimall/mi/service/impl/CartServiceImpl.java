@@ -6,7 +6,10 @@ package com.example.mimall.mi.service.impl;
  */
 
 import com.example.mimall.mi.entity.CartProduct;
+import com.example.mimall.mi.entity.front.Cart;
+import com.example.mimall.mi.mapper.TbCartMapper;
 import com.example.mimall.mi.service.CartService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,24 +21,41 @@ import java.util.List;
  */
 @Service
 public class CartServiceImpl extends BaseService implements CartService {
+    @Autowired
+    TbCartMapper tbCartMapper;
+
     @Override
     public int addCart(long userId, long itemId, int num) {
-        return 0;
+        if(num==0){
+            return deleteCartItem(userId, itemId);
+        }
+        List<Cart> cartList = getCartList(userId);
+        for(Cart cart:cartList){
+            if(cart.getProductId()==itemId){
+                return tbCartMapper.updateCart(userId, itemId, num+cart.getProductNum());
+            }
+        }
+        return tbCartMapper.addCart(userId, itemId, num);
     }
 
     @Override
-    public List<CartProduct> getCartList(long userId) {
-        return null;
+    public List<Cart> getCartList(long userId) {
+        List<Cart> cartList = tbCartMapper.getCartListById(userId);
+        System.out.println(cartList);
+        return cartList;
     }
 
     @Override
     public int updateCartNum(long userId, long itemId, int num, String checked) {
-        return 0;
+        if(num==0){
+            return deleteCartItem(userId, itemId);
+        }
+        return tbCartMapper.updateCart(userId, itemId, num);
     }
 
     @Override
     public int deleteCartItem(long userId, long itemId) {
-        return 0;
+        return tbCartMapper.deleteCart(userId, itemId);
     }
 
     @Override
