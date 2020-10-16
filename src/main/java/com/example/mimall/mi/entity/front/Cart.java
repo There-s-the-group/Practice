@@ -20,5 +20,5 @@ public class Cart {
 
     private Integer checked;
 
-    private Integer productNum;
+    private Integer buyNum;
 }

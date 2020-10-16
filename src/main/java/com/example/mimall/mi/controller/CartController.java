@@ -32,8 +32,11 @@ public class CartController extends BaseController{
      */
     @PostMapping("/member/addCart")
     public ResultVO addCart(@RequestBody Cart cart){
+        System.out.println(cart.getUserId());
+        System.out.println(cart.getProductId());
+        System.out.println(cart.getBuyNum());
         System.out.println(cart.getChecked());
-        final int i = cartService.addCart(cart.getUserId(), cart.getProductId(), cart.getProductNum(),cart.getChecked());
+        final int i = cartService.addCart(cart.getUserId(), cart.getProductId(), cart.getBuyNum(),cart.getChecked());
         return  result(i);
     }
 
@@ -77,7 +80,11 @@ public class CartController extends BaseController{
      */
     @PostMapping("/member/cartEdit")
     public ResultVO updateCartNum(@RequestBody Cart cart){
-        final int i = cartService.updateCartNum(cart.getUserId(), cart.getProductId(), cart.getProductNum(), cart.getChecked());
+        System.out.println(cart.getUserId());
+        System.out.println(cart.getProductId());
+        System.out.println(cart.getBuyNum());
+        System.out.println(cart.getChecked());
+        final int i = cartService.updateCartNum(cart.getUserId(), cart.getProductId(), cart.getBuyNum(), cart.getChecked());
         return result(i);
     }
 

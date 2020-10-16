@@ -28,7 +28,7 @@
     </update>
     <insert id="addCart">
         insert into tb_cart
-        values (#{userId}, #{itemId}, #,{checked} #{num})
+        values (#{userId}, #{itemId}, 1, #{num})
     </insert>
     <delete id="deleteCart">
         delete from tb_cart
