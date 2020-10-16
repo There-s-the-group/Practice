@@ -18,7 +18,7 @@ public class Cart {
 
     private Long productId;
 
-    private String checked;
+    private Integer checked;
 
-    private int productNum;
+    private Integer productNum;
 }

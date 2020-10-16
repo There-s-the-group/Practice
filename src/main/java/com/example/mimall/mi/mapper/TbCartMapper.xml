@@ -18,12 +18,12 @@
     </select>
     <update id="updateCart" >
         update tb_cart
-        set productNum = #{num}
+        set productNum = #{num},checked = #{checked}
         where userId = #{userId} and productId = #{itemId}
     </update>
     <insert id="addCart" >
         insert into tb_cart
-        values (#{userId}, #{itemId}, null, #{num})
+        values (#{userId}, #{itemId}, #,{checked} #{num})
     </insert>
     <delete id="deleteCart" >
         delete from tb_cart

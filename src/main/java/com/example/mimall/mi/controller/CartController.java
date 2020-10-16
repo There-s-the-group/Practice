@@ -32,7 +32,7 @@ public class CartController extends BaseController{
      */
     @PostMapping("/member/addCart")
     public ResultVO addCart(@RequestBody Cart cart){
-        final int i = cartService.addCart(cart.getUserId(), cart.getProductId(), cart.getProductNum());
+        final int i = cartService.addCart(cart.getUserId(), cart.getProductId(), cart.getProductNum(),cart.getChecked());
         return  result(i);
     }
 

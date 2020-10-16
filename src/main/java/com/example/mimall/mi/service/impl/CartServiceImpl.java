@@ -25,14 +25,14 @@ public class CartServiceImpl extends BaseService implements CartService {
     TbCartMapper tbCartMapper;
 
     @Override
-    public int addCart(long userId, long itemId, int num) {
+    public int addCart(long userId, long itemId, int num,int checked) {
         if(num==0){
             return deleteCartItem(userId, itemId);
         }
         List<Cart> cartList = getCartList(userId);
         for(Cart cart:cartList){
             if(cart.getProductId()==itemId){
-                return tbCartMapper.updateCart(userId, itemId, num+cart.getProductNum());
+                return tbCartMapper.updateCart(userId, itemId, num+cart.getProductNum(), checked);
             }
         }
         return tbCartMapper.addCart(userId, itemId, num);
@@ -41,16 +41,15 @@ public class CartServiceImpl extends BaseService implements CartService {
     @Override
     public List<Cart> getCartList(long userId) {
         List<Cart> cartList = tbCartMapper.getCartListById(userId);
-        System.out.println(cartList);
         return cartList;
     }
 
     @Override
-    public int updateCartNum(long userId, long itemId, int num, String checked) {
+    public int updateCartNum(long userId, long itemId, int num, int checked) {
         if(num==0){
             return deleteCartItem(userId, itemId);
         }
-        return tbCartMapper.updateCart(userId, itemId, num);
+        return tbCartMapper.updateCart(userId, itemId, num, checked);
     }
 
     @Override
@@ -59,7 +58,7 @@ public class CartServiceImpl extends BaseService implements CartService {
     }
 
     @Override
-    public int checkAll(long userId, String checked) {
+    public int checkAll(long userId, int checked) {
         return 0;
     }
 

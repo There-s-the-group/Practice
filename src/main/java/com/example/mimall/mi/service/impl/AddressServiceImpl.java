@@ -6,7 +6,9 @@ package com.example.mimall.mi.service.impl;
  */
 
 import com.example.mimall.mi.entity.TbAddress;
+import com.example.mimall.mi.mapper.TbAddressMapper;
 import com.example.mimall.mi.service.AddressService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,28 +20,34 @@ import java.util.List;
  */
 @Service
 public class AddressServiceImpl extends BaseService implements AddressService {
+    @Autowired
+    TbAddressMapper tbAddressMapper;
+
     @Override
     public List<TbAddress> getAddressList(Long userId) {
-        return null;
+        List<TbAddress> addressList=tbAddressMapper.getAddressListByUserId(userId);
+        System.out.println(addressList);
+        return addressList;
     }
 
     @Override
     public TbAddress getAddress(Long addressId) {
-        return null;
+
+        return tbAddressMapper.getAddressByAddressId(addressId);
     }
 
     @Override
     public int addAddress(TbAddress tbAddress) {
-        return 0;
+        return tbAddressMapper.addAddress(tbAddress);
     }
 
     @Override
     public int updateAddress(TbAddress tbAddress) {
-        return 0;
+        return tbAddressMapper.updateAddress(tbAddress);
     }
 
     @Override
     public int delAddress(TbAddress tbAddress) {
-        return 0;
+        return tbAddressMapper.deleteAddress(tbAddress);
     }
 }

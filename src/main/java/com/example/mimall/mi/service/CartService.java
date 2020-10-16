@@ -18,7 +18,7 @@ public interface CartService {
      * @param num
      * @return
      */
-    int addCart(long userId, long itemId, int num);
+    int addCart(long userId, long itemId, int num ,int checked);
 
     /**
      * 获取
@@ -35,7 +35,7 @@ public interface CartService {
      * @param checked
      * @return
      */
-    int updateCartNum(long userId, long itemId, int num,String checked);
+    int updateCartNum(long userId, long itemId, int num,int checked);
 
     /**
      * 删除单个
@@ -51,7 +51,7 @@ public interface CartService {
      * @param checked
      * @return
      */
-    int checkAll(long userId,String checked);
+    int checkAll(long userId,int checked);
 
     /**
      * 删除全部勾选的

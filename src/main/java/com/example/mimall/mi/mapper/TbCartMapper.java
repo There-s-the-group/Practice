@@ -15,7 +15,7 @@ import java.util.List;
 public interface TbCartMapper extends BaseMapper<Cart> {
     List<Cart> getCartListById(Long id);
 
-    int updateCart(long userId, long itemId, int num);
+    int updateCart(long userId, long itemId, int num, int checked);
 
     int addCart(long userId, long itemId, int num);
 

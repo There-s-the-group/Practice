@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mimall.mi.mapper.TbAddressMapper">
+    <resultMap id="BaseResultMap" type="com.example.mimall.mi.entity.TbAddress">
+        <id column="address_id" property="addressId" />
+        <result column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="tel" property="tel" />
+        <result column="street_name" property="streetName" />
+        <result column="is_default" property="isDefault" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    address_id,user_id,user_name,tel,street_name,is_default
+  </sql>
+    <select id="getAddressListByUserId" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from tb_address
+        where user_id = #{userId}
+    </select>
+    <select id="getAddressByAddressId" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from tb_address
+        where address_id=#{addressId}
+    </select>
+    <insert id="addAddress" parameterType="com.example.mimall.mi.entity.TbAddress">
+        insert into tb_address
+        values (#{addressId}, #{userId}, #{userName}, #{tel}, #{streetName}, #{isDefault})
+    </insert>
+    <update id="updateAddress" parameterType="com.example.mimall.mi.entity.TbAddress">
+        update tb_address
+        set user_name = #{userName},
+        tel = #{tel},
+        street_name = #{streetName},
+        is_default = #{isDefault}
+        where address_id = #{addressId}
+    </update>
+    <delete id="deleteAddress" parameterType="com.example.mimall.mi.entity.TbAddress">
+        delete from tb_address
+        where address_id = #{addressId}
+    </delete>
+</mapper>
