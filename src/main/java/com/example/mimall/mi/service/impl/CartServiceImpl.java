@@ -5,7 +5,6 @@ package com.example.mimall.mi.service.impl;
  * @Description:
  */
 
-import com.example.mimall.mi.entity.CartProduct;
 import com.example.mimall.mi.entity.front.Cart;
 import com.example.mimall.mi.mapper.TbCartMapper;
 import com.example.mimall.mi.service.CartService;

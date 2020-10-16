@@ -1,6 +1,5 @@
 package com.example.mimall.mi.service;
 
-import com.example.mimall.mi.entity.CartProduct;
 import com.example.mimall.mi.entity.front.Cart;
 
 import java.util.List;

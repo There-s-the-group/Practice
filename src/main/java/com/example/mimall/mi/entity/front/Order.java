@@ -5,7 +5,6 @@ package com.example.mimall.mi.entity.front;
  * @Description:
  */
 
-import com.example.mimall.mi.entity.CartProduct;
 import com.example.mimall.mi.entity.TbAddress;
 import lombok.Data;
 

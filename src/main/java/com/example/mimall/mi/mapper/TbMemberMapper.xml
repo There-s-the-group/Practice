@@ -11,4 +11,9 @@
     from tb_member
     where username = #{username}
     </select>
+    <update id="login" >
+        update tb_member
+        set updated = #{date}
+        where id = #{id}
+    </update>
 </mapper>

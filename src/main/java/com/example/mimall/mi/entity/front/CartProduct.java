@@ -1,4 +1,4 @@
-package com.example.mimall.mi.entity;
+package com.example.mimall.mi.entity.front;
 /**
  * @Author: kotori
  * @Date: 2020/10/15 16:26

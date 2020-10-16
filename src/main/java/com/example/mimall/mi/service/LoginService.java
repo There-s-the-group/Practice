@@ -29,5 +29,5 @@ public interface LoginService {
      * @param token
      * @return
      */
-    int logout(String token);
+    int logout(String token,int id);
 }

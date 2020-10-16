@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -56,7 +57,11 @@ public class LoginServiceImpl extends BaseService implements LoginService {
     }
 
     @Override
-    public int logout(String token) {
+    public int logout(String token,int id) {
+        if ( "login_success".equals(token)) {
+            final int login = tbMemberMapper.login(new Date(System.currentTimeMillis()), id);
+            return login;
+        }
         return 0;
     }
 }
