@@ -3,6 +3,8 @@ package com.example.mimall.mi.mapper;
 import com.example.mimall.mi.entity.TbMember;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Date;
+
 /**
  * @Author: kotori
  * @Date: 2020/10/15 15:52
@@ -23,5 +25,7 @@ public interface TbMemberMapper {
      * @return
      */
     TbMember selectByUsername(String username);
+
+    int login(Date date,int id);
 
 }
