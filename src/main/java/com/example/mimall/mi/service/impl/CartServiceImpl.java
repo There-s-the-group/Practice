@@ -54,16 +54,18 @@ public class CartServiceImpl extends BaseService implements CartService {
 
     @Override
     public int deleteCartItem(long userId, long itemId) {
+
         return tbCartMapper.deleteCart(userId, itemId);
     }
 
     @Override
     public int checkAll(long userId, int checked) {
-        return 0;
+
+        return tbCartMapper.checkAll(userId, checked);
     }
 
     @Override
     public int delChecked(long userId) {
-        return 0;
+        return tbCartMapper.deleteChecked(userId);
     }
 }

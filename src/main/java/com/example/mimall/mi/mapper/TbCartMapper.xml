@@ -2,31 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.mimall.mi.mapper.TbCartMapper">
     <resultMap id="BaseResultMap" type="com.example.mimall.mi.entity.front.Cart">
-        <id column="userId" property="userId" />
-        <result column="productId" property="productId" />
-        <result column="checked" property="checked" />
-        <result column="productNum" property="productNum" />
+        <id column="userId" property="userId"/>
+        <result column="productId" property="productId"/>
+        <result column="checked" property="checked"/>
+        <result column="productNum" property="productNum"/>
     </resultMap>
 
     <sql id="Base_Column_List">
     userId,productId,checked,productNum
   </sql>
     <select id="getCartListById" resultMap="BaseResultMap">
-        select <include refid="Base_Column_List"/>
+        select
+        <include refid="Base_Column_List"/>
         from tb_cart
         where userId = #{id}
     </select>
-    <update id="updateCart" >
+    <update id="updateCart">
         update tb_cart
         set productNum = #{num},checked = #{checked}
         where userId = #{userId} and productId = #{itemId}
     </update>
-    <insert id="addCart" >
+    <insert id="addCart">
         insert into tb_cart
         values (#{userId}, #{itemId}, #,{checked} #{num})
     </insert>
-    <delete id="deleteCart" >
+    <delete id="deleteCart">
         delete from tb_cart
         where userId = #{userId} and productId = #{itemId}
+    </delete>
+    <update id="checkAll">
+        update tb_cart
+        set checked = #{checked}
+        where userId = #{userId}
+    </update>
+    <delete id="deleteChecked">
+        delete from tb_cart
+        where userId = #{userId} and checked = 1;
     </delete>
 </mapper>

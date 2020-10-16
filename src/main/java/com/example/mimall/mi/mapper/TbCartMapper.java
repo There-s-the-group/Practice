@@ -20,4 +20,8 @@ public interface TbCartMapper extends BaseMapper<Cart> {
     int addCart(long userId, long itemId, int num);
 
     int deleteCart(long userId, long itemId);
+
+    int checkAll(long userId, int checked);
+
+    int deleteChecked(long userId);
 }
