@@ -36,6 +36,9 @@ public class CartController extends BaseController{
         System.out.println(cart.getProductId());
         System.out.println(cart.getBuyNum());
         System.out.println(cart.getChecked());
+        if (cart.getChecked() == null){
+            cart.setChecked(0);
+        }
         final int i = cartService.addCart(cart.getUserId(), cart.getProductId(), cart.getBuyNum(),cart.getChecked());
         return  result(i);
     }

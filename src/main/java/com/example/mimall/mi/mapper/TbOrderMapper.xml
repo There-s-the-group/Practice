@@ -2,24 +2,53 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.mimall.mi.mapper.TbOrderMapper">
-    <resultMap id="BaseResultMap" type="com.example.mimall.mi.entity.TbOrder">
-        <id column="order_id" jdbcType="VARCHAR" property="orderId" />
-        <result column="payment" jdbcType="DECIMAL" property="payment" />
-        <result column="payment_type" jdbcType="INTEGER" property="paymentType" />
-        <result column="post_fee" jdbcType="DECIMAL" property="postFee" />
-        <result column="status" jdbcType="INTEGER" property="status" />
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-        <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime" />
-        <result column="consign_time" jdbcType="TIMESTAMP" property="consignTime" />
-        <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-        <result column="close_time" jdbcType="TIMESTAMP" property="closeTime" />
-        <result column="shipping_name" jdbcType="VARCHAR" property="shippingName" />
-        <result column="shipping_code" jdbcType="VARCHAR" property="shippingCode" />
-        <result column="user_id" jdbcType="BIGINT" property="userId" />
-        <result column="buyer_message" jdbcType="VARCHAR" property="buyerMessage" />
-        <result column="buyer_nick" jdbcType="VARCHAR" property="buyerNick" />
-        <result column="buyer_comment" jdbcType="BIT" property="buyerComment" />
+    <resultMap id="GoodsResultMap" type="com.example.mimall.mi.entity.front.CartProduct">
+        <result column="item_id" property="productId"/>
+        <result column="price" property="salePrice"/>
+        <result column="num" property="productNum"/>
+        <result column="limit_num" property="limitNum"/>
+        <result column="title" property="productName"/>
+        <result column="pic_path" property="productImg"/>
+        <result column="buyNum" property="buyNum"/>
     </resultMap>
+
+    <sql id="Goods_Column_List">
+     item_id,tb_order_item.price,tb_item.num,limit_num,tb_order_item.title,pic_path,tb_order_item.num buyNum
+    </sql>
+    <select id="getGoodsOfOrder" resultMap="GoodsResultMap">
+        select <include refid="Goods_Column_List"/>
+        from tb_order_item join tb_item
+        on tb_order_item.item_id = tb_item.id and tb_order_item.order_id = #{orderId}
+    </select>
+
+    <resultMap id="OrderResultMap" type="com.example.mimall.mi.entity.front.Order">
+        <id property="orderId" column="orderId" />
+        <result property="orderStatus" column="orderStatus" />
+        <result property="createDate" column="createDate" />
+        <result property="closeDate" column="closeDate" />
+        <result property="finishDate" column="finishDate" />
+        <result property="payDate" column="payDate" />
+        <association property="addressInfo" javaType="com.example.mimall.mi.entity.TbAddress">
+            <id property="addressId" column="addressId" />
+            <result property="userId" column="userId" />
+            <result property="userName" column="userName" />
+            <result property="tel" column="tel" />
+            <result property="streetName" column="streetName" />
+            <result property="isDefault" column="isDefault" />
+        </association>
+    </resultMap>
+
+    <select id="getOrderList" resultMap="OrderResultMap">
+       select
+       tb_order.order_id orderId, tb_order.status orderStatus, create_time createDate,end_time closeDate,
+       close_time finishDate, payment_time payDate, address_id addressId,
+       tb_address.user_id userId, user_name userName, tel , street_name streetName,
+       is_default isDefault
+       from
+       tb_order join tb_address on tb_order.user_id = tb_address.user_id
+       where is_default = 1 and tb_order.user_id = #{userId}
+       limit #{page},#{size}
+    </select>
+
 
 </mapper>

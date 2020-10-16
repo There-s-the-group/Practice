@@ -31,9 +31,12 @@ public class OrderController extends BaseController{
      * @return
      */
     @GetMapping("/member/orderList")
-    public ResultVO getOrderList(String userId,
+    public ResultVO getOrderList(@RequestParam String userId,
                                  @RequestParam(defaultValue = "1") int page,
                                  @RequestParam(defaultValue = "5") int size){
+        System.out.println(userId);
+        System.out.println(page);
+        System.out.println(size);
         final PageOrder orderList = orderService.getOrderList(Long.valueOf(userId), page, size);
         return result(orderList);
     }
