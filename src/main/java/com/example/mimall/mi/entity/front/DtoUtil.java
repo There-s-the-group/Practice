@@ -1,12 +1,11 @@
-package com.example.mimall.mi.entity;
+package com.example.mimall.mi.entity.front;
 /**
  * @Author: kotori
- * @Date: 2020/10/15 16:14
+ * @Date: 2020/10/17 14:27
  * @Description:
  */
 
-import com.example.mimall.mi.entity.front.CartProduct;
-import com.example.mimall.mi.entity.front.Member;
+import com.example.mimall.mi.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

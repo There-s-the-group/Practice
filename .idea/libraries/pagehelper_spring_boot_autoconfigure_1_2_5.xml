@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="pagehelper-spring-boot-autoconfigure-1.2.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../work/maven/local/com/github/pagehelper/pagehelper-spring-boot-autoconfigure/1.2.5/pagehelper-spring-boot-autoconfigure-1.2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../work/maven/local/com/github/pagehelper/pagehelper-spring-boot-autoconfigure/1.2.5/pagehelper-spring-boot-autoconfigure-1.2.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

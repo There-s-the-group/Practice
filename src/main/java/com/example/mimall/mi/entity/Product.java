@@ -24,5 +24,5 @@ public class Product {
 
     private String subTitle;
 
-    private String productImageBig;
+    private String picUrl;
 }

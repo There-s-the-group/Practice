@@ -62,8 +62,9 @@ public class GoodsController extends BaseController{
                                   @RequestParam(defaultValue = "") Long cid,
                                   @RequestParam(defaultValue = "-1") int priceGt,
                                   @RequestParam(defaultValue = "-1") int priceLte){
+
         final ResultVO allProduct = contentService.getAllProduct(page, size, sort, cid, priceGt, priceLte);
-        return result(allProduct);
+        return allProduct;
     }
 
     /**

@@ -5,10 +5,8 @@ package com.example.mimall.mi.service.impl;
  * @Description:
  */
 
-import com.example.mimall.mi.entity.TbItem;
-import com.example.mimall.mi.entity.TbItemDesc;
-import com.example.mimall.mi.entity.TbPanel;
-import com.example.mimall.mi.entity.TbPanelContent;
+import com.example.mimall.mi.entity.*;
+import com.example.mimall.mi.entity.front.AllGoodsResult;
 import com.example.mimall.mi.entity.front.ProductDet;
 import com.example.mimall.mi.entity.vo.ResultVO;
 import com.example.mimall.mi.mapper.TbItemDescMapper;
@@ -16,6 +14,8 @@ import com.example.mimall.mi.mapper.TbItemMapper;
 import com.example.mimall.mi.mapper.TbPanelContentMapper;
 import com.example.mimall.mi.mapper.TbPanelMapper;
 import com.example.mimall.mi.service.ContentService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -105,7 +105,41 @@ public class ContentServiceImpl extends BaseService implements ContentService {
 
     @Override
     public ResultVO getAllProduct(int page, int size, String sort, Long cid, int priceGt, int priceLte) {
-        return null;
+        AllGoodsResult allGoodsResult=new AllGoodsResult();
+        List<Product> list=new ArrayList<>();
+        if(page<=0) {
+            page = 1;
+        }
+        System.out.println(page);
+        System.out.println(size);
+        System.out.println(sort);
+        System.out.println(cid);
+        System.out.println(priceGt);
+        System.out.println(priceLte);
+        //判断条件
+        String orderCol="created";
+        String orderDir="desc";
+        if(sort.equals("1")){
+            orderCol="price";
+            orderDir="asc";
+        }else if(sort.equals("-1")){
+            orderCol="price";
+            orderDir="desc";
+        }else{
+            orderCol="created";
+            orderDir="desc";
+        }
+        PageHelper.startPage(page,size);
+        List<TbItem> tbItemList = tbItemMapper.selectItemFront(cid,orderCol,orderDir,priceGt,priceLte);
+        PageInfo<TbItem> pageInfo=new PageInfo<TbItem>(tbItemList);
+        System.out.println(tbItemList.size());
+        for(TbItem tbItem:tbItemList){
+            Product product= DtoUtil.TbItem2Product(tbItem);
+            list.add(product);
+        }
+        allGoodsResult.setData(list);
+        allGoodsResult.setTotal((int) pageInfo.getTotal());
+        return result(allGoodsResult);
     }
 
     @Override
