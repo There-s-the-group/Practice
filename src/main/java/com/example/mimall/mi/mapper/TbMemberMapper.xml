@@ -16,4 +16,7 @@
         set updated = #{date}
         where id = #{id}
     </update>
+    <insert id="register">
+
+    </insert>
 </mapper>

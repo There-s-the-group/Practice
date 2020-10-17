@@ -70,6 +70,11 @@ public class AddressController extends BaseController{
         return result(i);
     }
 
+    /**
+     * 删除收货地址
+     * @param tbAddress
+     * @return
+     */
     @PostMapping("/member/delAddress")
     public ResultVO delAddress(@RequestBody TbAddress tbAddress){
         final int i = addressService.delAddress(tbAddress);

@@ -49,6 +49,10 @@
        where is_default = 1 and tb_order.user_id = #{userId}
        limit #{page},#{size}
     </select>
-
-
+    <delete id="delOrder">
+        delete tb_order.*,tb_order_item.*
+        from tb_order,tb_order_item
+        where tb_order_item.order_id = tb_order.order_id
+        and  tb_order.order_id=#{orderId}
+    </delete>
 </mapper>

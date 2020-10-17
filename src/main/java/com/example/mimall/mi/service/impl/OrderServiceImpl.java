@@ -62,6 +62,6 @@ public class OrderServiceImpl extends BaseService implements OrderService {
 
     @Override
     public int delOrder(Long orderId) {
-        return 0;
+        return tbOrderMapper.delOrder(orderId);
     }
 }

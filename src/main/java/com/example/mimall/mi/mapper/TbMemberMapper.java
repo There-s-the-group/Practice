@@ -28,4 +28,12 @@ public interface TbMemberMapper {
 
     int login(Date date,int id);
 
+    /**
+     * 注册
+     * @param userName
+     * @param userPwd
+     * @return
+     */
+    int register(String userName,String userPwd);
+
 }
