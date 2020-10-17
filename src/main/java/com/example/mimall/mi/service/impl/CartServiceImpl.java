@@ -11,6 +11,7 @@ import com.example.mimall.mi.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +41,15 @@ public class CartServiceImpl extends BaseService implements CartService {
     @Override
     public List<CartProduct> getCartList(long userId) {
         List<CartProduct> cartList = tbCartMapper.getCartListById(userId);
+        for (CartProduct cart:cartList
+             ) {
+            String temp = cart.getProductImg();
+            if(cart.getProductImg()!=null&&!cart.getProductImg().isEmpty()){
+                String images[]=cart.getProductImg().split(",");
+                cart.setProductImg(images[0]);
+            }
+        }
+
         System.out.println("service层："+cartList);
         System.out.println();
         return cartList;

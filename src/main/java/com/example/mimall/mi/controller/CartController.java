@@ -98,6 +98,8 @@ public class CartController extends BaseController{
      */
     @PostMapping("/member/editCheckAll")
     public ResultVO editCheckAll(@RequestBody Cart cart){
+        System.out.println(cart.getUserId());
+        System.out.println(cart.getChecked());
         final int i = cartService.checkAll(cart.getUserId(), cart.getChecked());
         return result(i);
     }
