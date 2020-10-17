@@ -8,6 +8,7 @@ package com.example.mimall.mi.entity.front;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @ClassName OrderInfo
@@ -27,4 +28,6 @@ public class OrderInfo {
     private String streetName;
 
     private BigDecimal orderTotal;
+
+    private List<CartProduct> goodsList;
 }

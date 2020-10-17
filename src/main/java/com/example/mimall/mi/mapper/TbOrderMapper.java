@@ -20,7 +20,7 @@ public interface TbOrderMapper extends BaseMapper<TbOrder> {
 
     int cancelOrder(Long orderId);
 
-    Long createOrder(OrderInfo orderInfo);
+    Long createOrder(TbOrder order);
 
     int delOrder(Long orderId);
 }

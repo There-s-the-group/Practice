@@ -1,5 +1,6 @@
 package com.example.mimall.mi.mapper;
 
+import com.example.mimall.mi.entity.TbOrderItem;
 import com.example.mimall.mi.entity.front.Order;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,6 +12,8 @@ import java.util.List;
  * @Description:
  */
 @Mapper
-public interface TbOrderInfo {
+public interface TbOrderItemMapper {
     List<Order> getOrderInfoList();
+
+    int createOrderItem(TbOrderItem orderItem);
 }

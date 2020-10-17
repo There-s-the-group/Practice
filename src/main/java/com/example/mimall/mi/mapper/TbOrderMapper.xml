@@ -55,4 +55,20 @@
         where tb_order_item.order_id = tb_order.order_id
         and  tb_order.order_id=#{orderId}
     </delete>
+
+    <insert id="createOrder" parameterType="com.example.mimall.mi.entity.TbOrder">
+        insert into tb_order (order_id, payment, payment_type,
+      post_fee, status, create_time,
+      update_time, payment_time, consign_time,
+      end_time, close_time, shipping_name,
+      shipping_code, user_id, buyer_message,
+      buyer_nick, buyer_comment)
+    values (#{orderId,jdbcType=VARCHAR}, #{payment,jdbcType=DECIMAL}, #{paymentType,jdbcType=INTEGER},
+      #{postFee,jdbcType=DECIMAL}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP}, #{paymentTime,jdbcType=TIMESTAMP}, #{consignTime,jdbcType=TIMESTAMP},
+      #{endTime,jdbcType=TIMESTAMP}, #{closeTime,jdbcType=TIMESTAMP}, #{shippingName,jdbcType=VARCHAR},
+      #{shippingCode,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{buyerMessage,jdbcType=VARCHAR},
+      #{buyerNick,jdbcType=VARCHAR}, #{buyerComment,jdbcType=BIT})
+    </insert>
+
 </mapper>
