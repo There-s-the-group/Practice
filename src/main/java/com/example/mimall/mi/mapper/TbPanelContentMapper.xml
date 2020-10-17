@@ -24,4 +24,15 @@
         where panel_id = #{id}
         order by sort_order
     </select>
+
+    <select id="selectByExample" parameterType="com.example.mimall.mi.entity.TbPanelContent" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from tb_panel_content
+        where panel_id = 0
+        order by id ;
+    </select>
 </mapper>

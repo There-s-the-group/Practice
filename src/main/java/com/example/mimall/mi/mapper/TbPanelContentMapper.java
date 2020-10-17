@@ -13,4 +13,5 @@ import java.util.List;
 @Mapper
 public interface TbPanelContentMapper {
     List<TbPanelContent> getTbPanelContentByPanelID(int id);
+    List<TbPanelContent> selectByExample();
 }

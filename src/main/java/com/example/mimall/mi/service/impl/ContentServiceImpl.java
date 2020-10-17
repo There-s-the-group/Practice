@@ -17,6 +17,7 @@ import com.example.mimall.mi.service.ContentService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -37,6 +38,9 @@ public class ContentServiceImpl extends BaseService implements ContentService {
     TbItemMapper tbItemMapper;
     @Autowired
     TbItemDescMapper tbItemDescMapper;
+
+//    @Value("${HEADER_PANEL_ID}")
+//    private int HEADER_PANEL_ID;
 
     @Override
     public ResultVO getHome() {
@@ -144,6 +148,8 @@ public class ContentServiceImpl extends BaseService implements ContentService {
 
     @Override
     public List<TbPanelContent> getNavList() {
-        return null;
+        List<TbPanelContent> list = new ArrayList<>();
+        list = tbPanelContentMapper.selectByExample();
+        return list;
     }
 }
