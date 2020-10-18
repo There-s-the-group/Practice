@@ -30,10 +30,9 @@ public interface TbMemberMapper {
 
     /**
      * 注册
-     * @param userName
-     * @param userPwd
+     * @param tbMember
      * @return
      */
-    int register(String userName,String userPwd);
+    int register(TbMember tbMember);
 
 }

@@ -3,20 +3,20 @@
 <mapper namespace="com.example.mimall.mi.mapper.TbMemberMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mimall.mi.entity.TbMember">
-        <id column="id" jdbcType="BIGINT" property="id" />
-        <result column="username" jdbcType="VARCHAR" property="username" />
-        <result column="password" jdbcType="VARCHAR" property="password" />
-        <result column="phone" jdbcType="VARCHAR" property="phone" />
-        <result column="email" jdbcType="VARCHAR" property="email" />
-        <result column="created" jdbcType="TIMESTAMP" property="created" />
-        <result column="updated" jdbcType="TIMESTAMP" property="updated" />
-        <result column="sex" jdbcType="VARCHAR" property="sex" />
-        <result column="address" jdbcType="VARCHAR" property="address" />
-        <result column="state" jdbcType="INTEGER" property="state" />
-        <result column="file" jdbcType="VARCHAR" property="file" />
-        <result column="description" jdbcType="VARCHAR" property="description" />
-        <result column="points" jdbcType="INTEGER" property="points" />
-        <result column="balance" jdbcType="DECIMAL" property="balance" />
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="updated" jdbcType="TIMESTAMP" property="updated"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="file" jdbcType="VARCHAR" property="file"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="points" jdbcType="INTEGER" property="points"/>
+        <result column="balance" jdbcType="DECIMAL" property="balance"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -24,19 +24,33 @@
     description, points, balance
   </sql>
     <select id="selectByUsername" parameterType="String" resultType="com.example.mimall.mi.entity.TbMember">
-    select
-    <include refid="Base_Column_List" />
-    from tb_member
-    where username = #{username}
+        select
+        <include refid="Base_Column_List"/>
+        from tb_member
+        where username = #{username}
     </select>
-    <update id="login" >
+    <update id="login">
         update tb_member
         set updated = #{date}
         where id = #{id}
     </update>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
-        select  <include refid="Base_Column_List"/>
+        select
+        <include refid="Base_Column_List"/>
         from tb_member
         where id = #{id}
     </select>
+
+    <insert id="register"  parameterType="com.example.mimall.mi.entity.TbMember">
+        insert into tb_member (id, username, password,
+      phone, email, created,
+      updated, sex, address,
+      state, file, description,
+      points, balance)
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP},
+      #{updated,jdbcType=TIMESTAMP}, #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+      #{state,jdbcType=INTEGER}, #{file,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+      #{points,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL})
+    </insert>
 </mapper>

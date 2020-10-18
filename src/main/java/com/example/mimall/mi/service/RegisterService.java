@@ -12,7 +12,7 @@ public interface RegisterService {
      * @param type
      * @return
      */
-    boolean checkData(String param, int type);
+    boolean checkData(String userName);
 
     /**
      * 注册
