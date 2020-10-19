@@ -24,7 +24,7 @@ public class SearchItem {
 
     private String subTitle;
 
-    private String productImageBig;
+    private String picUrl;
 
     private String categoryName;
 

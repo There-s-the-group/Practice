@@ -114,12 +114,6 @@ public class ContentServiceImpl extends BaseService implements ContentService {
         if(page<=0) {
             page = 1;
         }
-        System.out.println(page);
-        System.out.println(size);
-        System.out.println(sort);
-        System.out.println(cid);
-        System.out.println(priceGt);
-        System.out.println(priceLte);
         //判断条件
         String orderCol="created";
         String orderDir="desc";
@@ -136,7 +130,6 @@ public class ContentServiceImpl extends BaseService implements ContentService {
         PageHelper.startPage(page,size);
         List<TbItem> tbItemList = tbItemMapper.selectItemFront(cid,orderCol,orderDir,priceGt,priceLte);
         PageInfo<TbItem> pageInfo=new PageInfo<TbItem>(tbItemList);
-        System.out.println(tbItemList.size());
         for(TbItem tbItem:tbItemList){
             Product product= DtoUtil.TbItem2Product(tbItem);
             list.add(product);
