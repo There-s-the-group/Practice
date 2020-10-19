@@ -44,4 +44,6 @@ public interface AddressService {
      * @return
      */
     int delAddress(TbAddress tbAddress);
+
+    int changeAddress(TbAddress tbAddress);
 }

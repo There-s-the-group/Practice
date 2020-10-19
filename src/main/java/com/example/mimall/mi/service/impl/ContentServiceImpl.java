@@ -58,6 +58,23 @@ public class ContentServiceImpl extends BaseService implements ContentService {
                     tb.setSubTitle(tbItem.getSellPoint());
                     tb.setSalePrice(tbItem.getPrice());
                 }
+                if (tb.getPicUrl() != null){
+                    String images[]=tb.getPicUrl().split(",");
+                    switch (images.length){
+                        case 1 : {
+                            tb.setPicUrl(images[0]);break;
+                        }
+                        case 2 : {
+                            tb.setPicUrl(images[0]);
+                            tb.setPicUrl2(images[1]);break;
+                        }
+                        case 3 : {
+                            tb.setPicUrl(images[0]);
+                            tb.setPicUrl2(images[1]);
+                            tb.setPicUrl3(images[2]);break;
+                        }
+                    }
+                }
             }
         }
         return result(list);

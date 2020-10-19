@@ -36,6 +36,11 @@
         is_default = #{isDefault}
         where address_id = #{addressId}
     </update>
+    <update id="changeAddress" parameterType="com.example.mimall.mi.entity.TbAddress">
+        update tb_address
+        set is_default = 0
+        where user_id = #{userId}
+    </update>
     <delete id="deleteAddress" parameterType="com.example.mimall.mi.entity.TbAddress">
         delete from tb_address
         where address_id = #{addressId}

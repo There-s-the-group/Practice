@@ -33,6 +33,6 @@
         <include refid="Base_Column_List" />
         from tb_panel_content
         where panel_id = 0
-        order by id ;
+        order by sort_order ;
     </select>
 </mapper>

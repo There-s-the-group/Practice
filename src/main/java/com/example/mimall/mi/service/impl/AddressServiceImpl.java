@@ -43,11 +43,19 @@ public class AddressServiceImpl extends BaseService implements AddressService {
 
     @Override
     public int updateAddress(TbAddress tbAddress) {
+        if (tbAddress.getIsDefault()){
+            changeAddress(tbAddress);
+        }
         return tbAddressMapper.updateAddress(tbAddress);
     }
 
     @Override
     public int delAddress(TbAddress tbAddress) {
         return tbAddressMapper.deleteAddress(tbAddress);
+    }
+
+    @Override
+    public int changeAddress(TbAddress tbAddress) {
+        return tbAddressMapper.changeAddress(tbAddress);
     }
 }

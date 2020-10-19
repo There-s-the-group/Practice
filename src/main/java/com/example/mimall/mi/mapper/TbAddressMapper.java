@@ -15,5 +15,6 @@ public interface TbAddressMapper {
 
     int updateAddress(TbAddress tbAddress);
 
+    int changeAddress(TbAddress tbAddress);
     int deleteAddress(TbAddress tbAddress);
 }
