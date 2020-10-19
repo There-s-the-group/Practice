@@ -9,12 +9,12 @@ import com.example.mimall.mi.entity.front.Member;
 import com.example.mimall.mi.entity.front.MemberLoginRegist;
 import com.example.mimall.mi.entity.vo.ResultVO;
 import com.example.mimall.mi.service.LoginService;
+import com.example.mimall.mi.service.MemberService;
 import com.example.mimall.mi.service.RegisterService;
+import com.example.mimall.mi.util.MinioUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @ClassName MemberController
@@ -27,6 +27,8 @@ public class MemberController extends BaseController{
     LoginService loginService;
     @Autowired
     RegisterService registerService;
+    @Autowired
+    MemberService memberService;
 
     /**
      * 登录
@@ -50,10 +52,30 @@ public class MemberController extends BaseController{
         return result(logout);
     }
 
+    /**
+     * 注册
+     * @param memberLoginRegist
+     * @return
+     */
     @PostMapping("/member/register")
     public ResultVO register(@RequestBody MemberLoginRegist memberLoginRegist){
         final int register = registerService.register(memberLoginRegist.getUserName(), memberLoginRegist.getUserPwd());
         return result(register);
     }
 
+    /**
+     * 用户上传图片
+     */
+    @PostMapping("/member/imgaeUpload")
+    public ResultVO imgaeUpload(@RequestParam("userId") String userId,
+                                @RequestParam("imgData") MultipartFile imgData){
+        System.out.println("进来了");
+        MinioUtil instance = MinioUtil.getInstance();
+        String upLoadFile = instance.upLoadFile(imgData);
+        final int i = memberService.imgaeUpload(upLoadFile, Long.parseLong(userId));
+        if (i == 0){
+            return result(upLoadFile,"上传成功");
+        }
+        else return failedResult("上传失败");
+    }
 }

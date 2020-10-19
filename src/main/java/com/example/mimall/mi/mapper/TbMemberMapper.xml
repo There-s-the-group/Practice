@@ -53,4 +53,9 @@
       #{state,jdbcType=INTEGER}, #{file,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
       #{points,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL})
     </insert>
+    <update id="imgaeUpload" >
+        update tb_member
+        set file = #{filePath}
+        where id = #{userID}
+    </update>
 </mapper>

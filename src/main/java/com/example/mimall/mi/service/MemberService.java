@@ -6,4 +6,5 @@ package com.example.mimall.mi.service;
  * @Description: 用户接口
  */
 public interface MemberService {
+    int imgaeUpload(String filePath, Long userID);
 }

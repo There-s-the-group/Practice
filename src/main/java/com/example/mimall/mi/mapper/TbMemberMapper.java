@@ -35,4 +35,6 @@ public interface TbMemberMapper {
      */
     int register(TbMember tbMember);
 
+    int imgaeUpload(String filePath,long userID);
+
 }
